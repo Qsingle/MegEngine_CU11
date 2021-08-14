@@ -1,6 +1,6 @@
 # MegEngine build with cuda 11.x
 
-Build the whl with cuda-11.x to support for NVIDIA RTX 30X GPU.
+Build the whl with cuda-11.x, add the support of NVIDIA RTX 30X GPU.
 
 ## Provided whl as table:
 |Python|CUDA|MegEngine|Platform|Status|Download|
