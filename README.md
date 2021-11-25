@@ -2,6 +2,8 @@
 
 Build the whl with cuda-11.x, add the support of NVIDIA RTX 30X GPU.
 
+Due to the size of whl is too big, we upload the whl to [Baidu Cloud Driver](https://pan.baidu.com/s/15CLgzJtsdjmxsX8gKSbYSw) with extract code:8wa9.
+
 ## Provided whl as table:
 |Python|CUDA|MegEngine|Platform|Status|Download|
 |---|---|---|---|---|---|
