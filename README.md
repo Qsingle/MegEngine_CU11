@@ -2,7 +2,9 @@
 
 Build the whl with cuda-11.x, add the support of NVIDIA RTX 30X GPU.
 
-Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https://pan.baidu.com/s/15CLgzJtsdjmxsX8gKSbYSw), and the extract code:8wa9.
+Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https://pan.baidu.com/s/1qHkv9slHvVSNvSfbjkXgWg), and the extract code:bwwn.
+
+Update the release of MegEngine 1.7.0 for linux.
 
 ## Provided whl as table:
 |Python|CUDA|MegEngine|Platform|Status|Download|
