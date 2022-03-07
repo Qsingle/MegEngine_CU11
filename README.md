@@ -7,4 +7,5 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
 + 2022.03.06 Update the whl for MegEngine 1.8.2 (Can find at Baidu Cloud Driver)
 + 2022.02.22 Update the whl for MegEngine 1.8.0 (Can find at Baidu Cloud Driver)
 + Update the whl for MegEngine 1.7.0 (Can find at Baidu Cloud Driver)
-+ Release before 1.6.0 can find at this [link](https://github.com/Qsingle/MegEngine_CU11)
++ Release before 1.6.0 can find at this [link](https://github.com/Qsingle/MegEngine_CU11/releases)
+
