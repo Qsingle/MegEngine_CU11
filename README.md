@@ -18,7 +18,7 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
 
 ​	 Add the script for building MegEngine, you can use this script to build the MegEngine for windows.
 
-	### Steps
+### Steps
 
 + Clone the source from github.
 
