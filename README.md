@@ -12,3 +12,40 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
 + Update the whl for MegEngine 1.7.0 (Can find at Baidu Cloud Driver)
 + Release before 1.6.0 can find at this [link](https://github.com/Qsingle/MegEngine_CU11/releases)
 
+
+
+## Update
+
+​	 Add the script for building MegEngine, you can use this script to build the MegEngine for windows.
+
+	### Steps
+
++ Clone the source from github.
+
+  ```shell
+  git clone https://github.com/MegEngine/MegEngine.git
+  ```
+
+  
+
++ Replace the files in `scripts/whl/windows` and `scripts/cmake-build` by the file in this repository.
+
++ Install the python by the script ((Note: The python tool that needs to install from the script must not have been installed on your computer).).
+
+  ```powershell
+  .\scripts\whl\windows\python_install.ps1
+  ```
+
++ Install the Visual Studio Build Tool by the script.
+
+  ```powershell
+  .\scripts\whl\windows\python_install.ps1
+  ```
+
++ Build the MegEngine.
+
+  ```shell
+  ./scripts/whl/windows/build_whl.sh
+  ```
+
+  
