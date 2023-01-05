@@ -24,6 +24,12 @@ config["cu114"]={
     "cudnn_name": "cudnn-8.2.1.32-hae0fe6e_0.tar.bz2"
 }
 
+config["cu110"]={
+    "version":"11.1.0",
+    "driver":"456.43",
+    "cudnn_name": "cudnn-8.0.5.39-h36d860d_1.tar.bz2"
+}
+
 config["cu101"]={
     "version":"10.1.105",
     "driver":"418.96",
