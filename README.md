@@ -4,6 +4,8 @@ Build the whl with cuda-11.x, add the support of NVIDIA RTX 30X GPU.
 
 Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https://pan.baidu.com/s/1qHkv9slHvVSNvSfbjkXgWg), and the extract code:bwwn.
 
++ 2023.02.27 Update the whl to the latest version of MegEngine, update README.
+
 + 2023.01.05 Update the README and add the cu110
 
 + 2022.10.04 Upload the scripts for build the whl at windows
@@ -34,7 +36,7 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
 
 + Replace the files in `scripts/whl/windows` and `scripts/cmake-build` by the file in this repository.
 
-+ Install the python by the script ((Note: The python tool that needs to install from the script has not been installed on your computer).).
++ Install the python by the script (Note: Please make sure the python tool:"3.6.8", "3.7.7", "3.8.3", "3.9.4" and "3.10.1" not installed in your PC.). You may get the error:`FullyQualifiedErrorId : UnauthorizedAccess.`, you can follow this [link](https://answers.microsoft.com/en-us/windows/forum/all/fullyqualifiederrorid-unauthorizedaccess/a73a564a-9870-42c7-bd5e-7072eb1a3136) to deal with it.
 
   ```powershell
   .\scripts\whl\windows\python_install.ps1
