@@ -4,6 +4,7 @@ foreach($ver in $versions)
 {
     $download_url="https://www.python.org/ftp/python/${ver}/python-${ver}-amd64.exe"
     $download_file="python-${ver}-amd64.exe"
+    echo "Download the python-${ver} from ${download_url}"
     curl.exe -SL $download_url --output $download_file
     if ($LASTEXITCODE -ne 0) {
         echo "Download file ${download_file} failed"

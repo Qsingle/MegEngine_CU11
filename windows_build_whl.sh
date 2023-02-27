@@ -12,7 +12,7 @@ function err_env() {
     echo "check_env failed: pls refs ${SRC_DIR}/scripts/whl/BUILD_PYTHON_WHL_README.md to init env"
     exit -1
 }
-
+echo $EXTRA_CMAKE_FLAG
 function append_path_env_and_check() {
     if [[ -z $VS_PATH ]]; then
         echo  "export vs2019 install path"
@@ -30,7 +30,7 @@ SRC_DIR=$(READLINK -f "`dirname $0`/../../../")
 source ${SRC_DIR}/scripts/whl/utils/utils.sh
 
 ALL_PYTHON=${ALL_PYTHON}
-FULL_PYTHON_VER="3.6.8 3.7.7 3.8.3 3.9.4"
+FULL_PYTHON_VER="3.6.8 3.7.7 3.8.3 3.9.4 3.10.1" 
 if [[ -z ${ALL_PYTHON} ]]
 then
     ALL_PYTHON=${FULL_PYTHON_VER}
@@ -117,9 +117,9 @@ function depend_real_copy() {
 
     if [ ${BUILD_WHL_CPU_ONLY} = "OFF" ]; then
         echo "copy nvidia lib...."
-        echo "Copy ${TRT_LIBS} to ${REAL_DST}"
         for TRT_LIB in $TRT_LIBS
         do
+            echo "Copy ${TRT_LIB} to ${REAL_DST}"
             cp "${TRT_LIB}" ${REAL_DST}
         done
         if [[ ! -z $MYELIN_LIB ]]; then
@@ -127,6 +127,7 @@ function depend_real_copy() {
         fi
         for CUDNN_LIB in $CUDNN_LIBS
         do
+            echo "Copy ${CUDNN_LIB} to ${REAL_DST}"
             cp "${CUDNN_LIB}" ${REAL_DST}
         done
         cp "${CUSOLVER_LIB}" ${REAL_DST}
@@ -174,7 +175,7 @@ function do_build() {
             # TODO: may all cmake issue can be resolved after rm CMakeCache?
             # if YES, remove this to use old cache and speed up CI
             echo "warning: remove old build_dir for the first loop"
-            #rm -rf ${BUILD_DIR}
+            rm -rf ${BUILD_DIR}
         fi
 
         #config python3
@@ -277,7 +278,7 @@ function third_party_prepare() {
     if [[ -z ${ALREADY_INSTALL_MKL} ]]
     then
         echo "init third_party..."
-        #${SRC_DIR}/third_party/install-mkl.sh
+        ${SRC_DIR}/third_party/install-mkl.sh
     else
         echo "skip init mkl internal"
     fi
