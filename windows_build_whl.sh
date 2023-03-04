@@ -92,7 +92,9 @@ fi
 # TRT_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/TensorRT-6.0.1.5/lib/nvinfer.dll"
 # TRT_PLUGIN_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/TensorRT-6.0.1.5/lib/nvinfer_plugin.dll"
 TRT_LIBS=`ls $TRT_ROOT_DIR/lib/nvinfer*.dll`
-MYELIN_LIB=`ls $TRT_ROOT_DIR/lib/myelin64_*.dll`
+if [[ $TRT_VERSION == "7.2.3.4" ]]; then
+    MYELIN_LIB=`ls $TRT_ROOT_DIR/lib/myelin64_*.dll`
+fi
 # CUDNN_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/cudnn-10.1-windows10-x64-v7.6.5.32/cuda/bin/cudnn64_7.dll"
 CUDNN_LIBS=`ls $CUDNN_ROOT_DIR/bin/cudnn*.dll`
 # CUSOLVER_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin/cusolver64_10.dll"
@@ -104,7 +106,7 @@ CURAND_LIB=`ls $CUDA_ROOT_DIR/bin/curand64_*.dll`
 CUBLASLT_LIB=`ls $CUDA_ROOT_DIR/bin/cublasLt64_*.dll`
 # CUBLASLT_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin/cublasLt64_10.dll"
 CUDART_LIB=`ls $CUDA_ROOT_DIR/bin/cudart64_*.dll`
-NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_110_0.dll`
+NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_*.dll`
 # CUDART_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin/cudart64_101.dll"
 MGE_EXPORT_DLL="${SRC_DIR}/build_dir/host/build/src/megengine_shared.dll"
 MGE_EXPORT_LIB="${SRC_DIR}/build_dir/host/build/src/megengine_shared.lib"

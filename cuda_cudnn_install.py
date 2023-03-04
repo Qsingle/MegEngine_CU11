@@ -18,6 +18,12 @@ config["cu112"] = {
     "cudnn_name":"cudnn-8.2.1.32-hae0fe6e_0.tar.bz2"
 }
 
+config["cu118"] = {
+    "version":"11.8.0", 
+    "driver": "522.06",
+    "cudnn_name": ""
+}
+
 config["cu114"]={
     "version":"11.4.0",
     "driver":"471.11", 
@@ -40,6 +46,9 @@ class BaseExtracter:
     def __init__(self, sdk_name, install_path) -> None:
         cuda_base_url = "https://developer.download.nvidia.cn/compute/cuda/{}/local_installers/cuda_{}_{}_win10.exe"
         cuda_base_name = "{}_{}_win10.exe"
+        if sdk_name == "cu118":
+            cuda_base_url="https://developer.download.nvidia.com/compute/cuda/{}/local_installers/cuda_{}_{}_windows.exe"
+            cuda_base_name = "{}_{}_windows.exe"
         self.config = config[sdk_name]
         version = self.config["version"]
         driver = self.config["driver"]
@@ -93,6 +102,10 @@ class CudnnExtracter(BaseExtracter):
         
     
     def extract(self):
+        if self.config["version"] == "11.8.0":
+            print("The cudnn for cudatoolkit-11.8 is not be supported now, please download the cudnn-8.6"\
+                  "to the install directory:{} manually".format(self.install_path))
+            return
         output_name = self.cudnn_download_url.split("/")[-1]
         print(output_name)
         download_cmd = ["curl.exe", "-SL", "-o", output_name, self.cudnn_download_url]
@@ -126,4 +139,4 @@ if __name__ == "__main__":
     e.extract()
     x = CudnnExtracter(sdk_name=sdk_name, install_path=args.cudnn_path)
     x.extract()
-    print("test")
+    #print("test")

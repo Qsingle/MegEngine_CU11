@@ -4,7 +4,7 @@
 """
 import os
 import subprocess
-os.environ["PATH"] = r"D:\Program Files\7-Zip;"+os.environ["PATH"]
+os.environ["PATH"] = r"C:\Program Files\7-Zip;"+os.environ["PATH"]
 
 class LLVMInstaller:
     def __init__(self, install_path="./llvm") -> None:
