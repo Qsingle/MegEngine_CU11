@@ -145,14 +145,14 @@ function depend_real_copy() {
         cp "${CURAND_LIB}" ${REAL_DST}
         cp "${CUBLASLT_LIB}" ${REAL_DST}
         cp "${CUDART_LIB}" ${REAL_DST}
-        if [[ ! -z $NVTRC_LIB ]]; then
+        if [[ ! -z ${NVTRC_LIB} ]]; then
           for lib in ${NVTRC_LIB} 
           do
             echo "Copy ${lib} to ${REAL_DST}"
             cp "${lib}" ${REAL_DST}
           done
         fi
-
+        
         if [[ ! -z ${ZLIBWAPI} ]]; then
             echo "Copy ${ZLIBWAPI} to ${REAL_DST}"
             cp "${ZLIBWAPI}" ${REAL_DST} 

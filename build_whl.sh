@@ -1,5 +1,7 @@
 #!/bin/bash -e
-export SDK_NAME="cu112"
+if [[ -z ${SDK_NAME} ]]; then
+    export SDK_NAME="cu112"
+fi
 SRC_DIR=$(READLINK -f "`dirname $0`/../../../")
 echo "Install LLVM"
 ${SRC_DIR}/python_dev/3.8.3/python3.exe scripts/whl/windows/llvm_install.py --install_path=./llvm_tool
@@ -24,8 +26,10 @@ export CUDA_ROOT_DIR="${SRC_DIR}/cuda_tool/nvcc"
 export CUDNN_ROOT_DIR="${SRC_DIR}/cuda_tool/Library"
 if [ ${SDK_NAME} == "cu118" ]; then
     TRT_DIR="TensorRT-8.5.3.1"
-else
+elif [ ${SDK_NAME} == "cu112" || ${SDK_NAME} == "cu114" || ${SDK_NAME} == "cu110"]
     TRT_DIR="TensorRT-7.2.3.4"
+else
+    TRT_DIR="TensorRT-6.0.1.5"
 fi
 export TRT_ROOT_DIR="/d/tools/$TRT_DIR"
 export TRT_VERSION=${TRT_DIR#*-}
