@@ -6,6 +6,7 @@ curl -SL https://aka.ms/vs/16/release/vs_buildtools.exe --output ./vs_buildtools
 ./vs_buildtools.exe --installPath $PWD/vs --nocache --wait --quiet --norestart  \
                     --add Microsoft.Component.MSBuild \
                     --add Microsoft.VisualStudio.Component.Roslyn.Compiler \
+                    --add Microsoft.VisualStudio.Component.Windows10SDK.18362 \
                     --add Microsoft.VisualStudio.Workload.VCTools \
                     --add Microsoft.VisualStudio.Component.TextTemplating \
                     --add Microsoft.VisualStudio.Component.VC.CoreIde \
@@ -15,7 +16,7 @@ curl -SL https://aka.ms/vs/16/release/vs_buildtools.exe --output ./vs_buildtools
                     --add Microsoft.VisualStudio.Component.VC.14.26.x86.x64
 rm vs_buildtools.exe
 
-if [ $ERRORLEVEL -ne 3010 ]; then
+if [[ $ERRORLEVEL -ne 3010 ]]; then
     echo "Error exit code:" $ERRORLEVEL
     curl.exe -o vscollect.exe -SL "https://aka.ms/vscollect.exe"
     ./vscollect.exe -NoNewWindow -Wait -PassThru -zip ${PWD}/log.zip

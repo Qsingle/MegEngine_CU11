@@ -106,7 +106,15 @@ CURAND_LIB=`ls $CUDA_ROOT_DIR/bin/curand64_*.dll`
 CUBLASLT_LIB=`ls $CUDA_ROOT_DIR/bin/cublasLt64_*.dll`
 # CUBLASLT_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin/cublasLt64_10.dll"
 CUDART_LIB=`ls $CUDA_ROOT_DIR/bin/cudart64_*.dll`
-NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_*.dll`
+if [[ $TRT_VERSION == 7.2.3.4 ]]; then
+    NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_111_0.dll`
+else
+    NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_*.dll`
+done
+
+if [[ $SDK_NAME == "cu118" ]]; then
+    ZLIBWAPI=`ls $CUDA_ROOT_DIR/bin/zlibwapi.dll`
+fi
 # CUDART_LIB="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin/cudart64_101.dll"
 MGE_EXPORT_DLL="${SRC_DIR}/build_dir/host/build/src/megengine_shared.dll"
 MGE_EXPORT_LIB="${SRC_DIR}/build_dir/host/build/src/megengine_shared.lib"
@@ -138,7 +146,16 @@ function depend_real_copy() {
         cp "${CUBLASLT_LIB}" ${REAL_DST}
         cp "${CUDART_LIB}" ${REAL_DST}
         if [[ ! -z $NVTRC_LIB ]]; then
-            cp "${NVTRC_LIB}" ${REAL_DST}
+          for lib in ${NVTRC_LIB} 
+          do
+            echo "Copy ${lib} to ${REAL_DST}"
+            cp "${lib}" ${REAL_DST}
+          done
+        fi
+
+        if [[ ! -z ${ZLIBWAPI} ]]; then
+            echo "Copy ${ZLIBWAPI} to ${REAL_DST}"
+            cp "${ZLIBWAPI}" ${REAL_DST} 
         fi
     fi
 }
@@ -280,7 +297,7 @@ function third_party_prepare() {
     if [[ -z ${ALREADY_INSTALL_MKL} ]]
     then
         echo "init third_party..."
-        ${SRC_DIR}/third_party/install-mkl.sh
+        #${SRC_DIR}/third_party/install-mkl.sh
     else
         echo "skip init mkl internal"
     fi

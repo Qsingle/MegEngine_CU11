@@ -55,6 +55,10 @@ elif [[ $SDK_NAME == "cu118" ]]; then
         -gencode arch=compute_86,code=sm_86 \
         -gencode arch=compute_89,code=sm_89 \
         -gencode arch=compute_89,code=compute_89\" "
+    if [[ ! -f ${SRC_DIR}/cuda_tool/nvcc/bin/zlibwapi.dll ]]; then
+        echo "try to download the zlibwapi.dll from https://duba-seo-dll-1252921383.cos.ap-beijing.myqcloud.com/dll/zlibwapi.dll"
+        curl -SL https://duba-seo-dll-1252921383.cos.ap-beijing.myqcloud.com/dll/zlibwapi.dll --output ${SRC_DIR}/cuda_tool/nvcc/bin/zlibwapi.dll
+    fi
 elif [[ $SDK_NAME -eq "cu101" ]]; then
     export EXTRA_CMAKE_FLAG=" -DMGE_WITH_CUDNN_SHARED=OFF -DMGE_WITH_CUBLAS_SHARED=OFF"
     

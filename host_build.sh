@@ -287,7 +287,7 @@ function cmake_build_windows() {
     echo "now try build windows native with cmake/clang-ci/Ninja/Visual Studio ....."
     export CFLAGS=-$MGE_WINDOWS_BUILD_MARCH
     export CXXFLAGS=-$MGE_WINDOWS_BUILD_MARCH
-    cmd.exe /c " \
+    cmd.exe /C " \
         vcvarsall.bat $MGE_WINDOWS_BUILD_ARCH -vcvars_ver=14.26.28801 && cmake  -G "Ninja" \
         -DMGE_ARCH=$MGE_ARCH \
         -DMGE_INFERENCE_ONLY=$MGE_INFERENCE_ONLY \
@@ -300,7 +300,7 @@ function cmake_build_windows() {
         ${EXTRA_CMAKE_ARGS} ../../.. "
 
     config_ninja_target_cmd ${NINJA_VERBOSE} ${BUILD_DEVELOP} "${SPECIFIED_TARGET}" ${NINJA_DRY_RUN} ${NINJA_MAX_JOBS}
-    cmd.exe /c " vcvarsall.bat $MGE_WINDOWS_BUILD_ARCH -vcvars_ver=14.26.28801 && ${NINJA_CMD} "
+    cmd.exe /C " vcvarsall.bat $MGE_WINDOWS_BUILD_ARCH -vcvars_ver=14.26.28801 && ${NINJA_CMD} "
 }
 
 if [[ $OS =~ "NT" ]]; then
