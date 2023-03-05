@@ -10,6 +10,7 @@ import shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory as tempdir
 from distutils.dir_util import copy_tree
+os.environ["PATH"] = r"C:\Program Files\7-Zip;"+os.environ["PATH"]
 #
 config = {}
 config["cu112"] = {
