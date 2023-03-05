@@ -44,17 +44,19 @@ config["cu101"]={
 
 class BaseExtracter:
     def __init__(self, sdk_name, install_path) -> None:
-        cuda_base_url = "https://developer.download.nvidia.cn/compute/cuda/{}/local_installers/cuda_{}_{}_win10.exe"
+        #you can change .com to .cn, if you cannot download it from nvidia.com
+        cuda_base_url = "https://developer.download.nvidia.com/compute/cuda/{}/local_installers/cuda_{}_{}_win10.exe"
         cuda_base_name = "{}_{}_win10.exe"
         if sdk_name == "cu118":
             cuda_base_url="https://developer.download.nvidia.com/compute/cuda/{}/local_installers/cuda_{}_{}_windows.exe"
-            cuda_base_name = "{}_{}_windows.exe"
+            cuda_base_name = "cuda_{}_{}_windows.exe"
         self.config = config[sdk_name]
         version = self.config["version"]
         driver = self.config["driver"]
         self.cuda_download_url = cuda_base_url.format(version, version, driver)
         self.install_path = install_path
         self.package_name = cuda_base_name.format(version, driver)
+        #We use the mirror site provided by the CRA of SUSTech to download the cudnn, you can change it.
         cudnn_base_url = "https://mirrors.sustech.edu.cn/anaconda/cloud/conda-forge/win-64/"
         self.cudnn_download_url = cudnn_base_url+self.config["cudnn_name"]
         
@@ -68,9 +70,9 @@ class CudaExtracter(BaseExtracter):
         
     
     def extract(self):
-        print("Try to download CUDA {} from {}".format(self.package_name, self.cuda_download_url))
         download_cmd = ["curl.exe", "-SL", "-o", self.package_name, self.cuda_download_url]
         if not os.path.isfile(self.package_name):
+            print("Try to download CUDA {} from {}".format(self.package_name, self.cuda_download_url))
             subprocess.run(download_cmd)
         else:
             print("Setup file {} is exists, skip downloading".format(self.package_name))
@@ -109,9 +111,8 @@ class CudnnExtracter(BaseExtracter):
         output_name = self.cudnn_download_url.split("/")[-1]
         print(output_name)
         download_cmd = ["curl.exe", "-SL", "-o", output_name, self.cudnn_download_url]
-        
-        print("Try to download cudnn from {}".format(self.cudnn_download_url))
         if not os.path.isfile(output_name):
+            print("Try to download cudnn from {}".format(self.cudnn_download_url))
             subprocess.run(download_cmd)
         else:
             print("Cudnn file {} is exists, skip downloading".format(self.package_name))

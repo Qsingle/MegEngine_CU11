@@ -110,7 +110,7 @@ if [[ $TRT_VERSION == 7.2.3.4 ]]; then
     NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_111_0.dll`
 else
     NVTRC_LIB=`ls $CUDA_ROOT_DIR/bin/nvrtc64_*.dll`
-done
+fi
 
 if [[ $SDK_NAME == "cu118" ]]; then
     ZLIBWAPI=`ls $CUDA_ROOT_DIR/bin/zlibwapi.dll`
@@ -297,7 +297,7 @@ function third_party_prepare() {
     if [[ -z ${ALREADY_INSTALL_MKL} ]]
     then
         echo "init third_party..."
-        #${SRC_DIR}/third_party/install-mkl.sh
+        ${SRC_DIR}/third_party/install-mkl.sh
     else
         echo "skip init mkl internal"
     fi

@@ -19,5 +19,5 @@ rm vs_buildtools.exe
 if [[ $ERRORLEVEL -ne 3010 ]]; then
     echo "Error exit code:" $ERRORLEVEL
     curl.exe -o vscollect.exe -SL "https://aka.ms/vscollect.exe"
-    ./vscollect.exe -NoNewWindow -Wait -PassThru -zip ${PWD}/log.zip
+    ./vscollect.exe -Wait -PassThru -zip ${PWD}/log.zip
 fi

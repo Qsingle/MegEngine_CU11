@@ -35,7 +35,9 @@ rm -rf mkl
 
 if [[ -z ${FTP_URL_PREFIX} ]];then
     DOWNLOAD_FILE='${package}-${MKL_VERSION}-intel_${MKL_PATCH}.tar.bz2'
-    URL='https://mirrors.sustech.edu.cn/anaconda/cloud/intel/$FILE_PREFIX-${platform}/'${DOWNLOAD_FILE}
+    URL='https://anaconda.org/intel/${package}/${MKL_VERSION}/download/$FILE_PREFIX-${platform}/'${DOWNLOAD_FILE}
+    #if you can not download the file from anaconda.org, you can uncommit this URL to download it from the mirror supported by the CRA of SUStech
+    #URL='https://mirrors.sustech.edu.cn/anaconda/cloud/intel/$FILE_PREFIX-${platform}/'${DOWNLOAD_FILE} 
 else
     DOWNLOAD_FILE='${package}.tar.bz2'
     URL='$FTP_URL_PREFIX/$FILE_PREFIX-${platform}-'${DOWNLOAD_FILE}
