@@ -24,9 +24,9 @@ do
 done
 export CUDA_ROOT_DIR="${SRC_DIR}/cuda_tool/nvcc"
 export CUDNN_ROOT_DIR="${SRC_DIR}/cuda_tool/Library"
-if [ ${SDK_NAME} == "cu118" ]; then
+if [[ ${SDK_NAME} == "cu118" ]]; then
     TRT_DIR="TensorRT-8.5.3.1"
-elif [ ${SDK_NAME} == "cu112" || ${SDK_NAME} == "cu114" || ${SDK_NAME} == "cu110"]; then
+elif [[ ${SDK_NAME} == "cu112" || ${SDK_NAME} == "cu114" || ${SDK_NAME} == "cu110" ]]; then
     TRT_DIR="TensorRT-7.2.3.4"
 else
     TRT_DIR="TensorRT-6.0.1.5"
