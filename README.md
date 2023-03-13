@@ -36,7 +36,7 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
   git clone https://github.com/MegEngine/MegEngine.git
   ```
 
-+ Replace `scripts/whl/windows/windows_build_whl.sh` and `scripts/cmake-build/host-build.sh` by the file in this repository.
++ Replace `scripts/whl/windows/windows_build_whl.sh` `third_party/install_mkl.sh`,  and `scripts/cmake-build/host-build.sh` by the file in this repository.
 
 + Install the python by the script (Note: Please make sure the python tool:"3.6.8", "3.7.7", "3.8.3", "3.9.4" and "3.10.1" not installed in your PC.). You may get the error:`FullyQualifiedErrorId : UnauthorizedAccess.`, you can follow this [link](https://answers.microsoft.com/en-us/windows/forum/all/fullyqualifiederrorid-unauthorizedaccess/a73a564a-9870-42c7-bd5e-7072eb1a3136) to deal with it.
 
@@ -47,7 +47,7 @@ Due to the size of whl being too big, we upload it to [Baidu Cloud Driver](https
 + Install the Visual Studio Build Tool by the script.
 
   ```powershell
-  .\scripts\whl\windows\vs_buildtool_install.ps1
+  ./scripts/whl/windows/vs_buildtool_install.sh
   ```
   
 + Modify the TensorRT root path in build_whl.sh, or you can download the TensorRT 7.2.3.4 and extract it to `C:/tools` (PS: You can change the TRT_ROOT_DIR defined in build_whl.sh, so you can change the position of the TensorRT).
